@@ -1,0 +1,50 @@
+
+import { Container } from "@/components/ui/container";
+import { Button } from "@/components/ui/button";
+import { Mail, Linkedin, Github } from "lucide-react";
+
+interface ContactSectionProps {
+  id: string;
+}
+
+const contactLinks = [
+  {
+    name: "Email",
+    icon: <Mail className="h-5 w-5" />,
+    href: "mailto:shikharkc63@gmail.com",
+    label: "Email Me"
+  },
+  {
+    name: "LinkedIn",
+    icon: <Linkedin className="h-5 w-5" />,
+    href: "https://www.linkedin.com/in/shikharkc6/",
+    label: "LinkedIn"
+  },
+  {
+    name: "GitHub",
+    icon: <Github className="h-5 w-5" />,
+    href: "https://github.com/kcshikhar906",
+    label: "GitHub"
+  }
+];
+
+export default function ContactSection({ id }: ContactSectionProps) {
+  return (
+    <Container id={id} className="bg-background">
+      <h2 className="text-3xl sm:text-4xl font-bold font-heading mb-8 text-center">Get In Touch</h2>
+      <p className="text-lg text-foreground/80 mb-12 text-center max-w-2xl mx-auto">
+        Have a question or want to work together? Feel free to reach out.
+      </p>
+      <div className="flex flex-col sm:flex-row justify-center items-center gap-6">
+        {contactLinks.map((link) => (
+          <Button key={link.name} asChild variant="outline" size="lg" className="w-full sm:w-auto shadow-sm hover:shadow-md transition-shadow">
+            <a href={link.href} target="_blank" rel="noopener noreferrer">
+              {link.icon}
+              <span className="ml-2">{link.label}</span>
+            </a>
+          </Button>
+        ))}
+      </div>
+    </Container>
+  );
+}
